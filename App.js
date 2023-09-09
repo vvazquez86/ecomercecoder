@@ -5,11 +5,14 @@ import Header from './src/components/Header';
 import Categorias from './src/components/Categorias';
 import Home from './src/screms/Home';
 import { textFont } from './src/themes/textFont';
-
+import Buscador from './src/components/Buscador';
+import Productos from './src/screms/Productos';
 export default function App() {
   return (
     <View>
-      <Home />
+      {/* <Home /> */}
+      {/* <Buscador /> */}
+      <Productos categoria='smartphones'/>
     </View>
   );
 }
