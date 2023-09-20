@@ -25,7 +25,7 @@
         fontSize: 25,
         marginVertical: 10,
         fontWeight: "600",
-        color: colors.marronSuave
+        color: colors.marronSuave,    
     }
  })
  
