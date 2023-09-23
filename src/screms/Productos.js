@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
 import Buscador from '../components/Buscador'
 import Header from '../components/Header'
@@ -6,13 +6,18 @@ import { productos } from '../data/productos'
 import ProductosItem from '../components/ProductosItem'
 import { useEffect, useState } from 'react'
 
-const Productos = ({ categoria }) => {
+
+const Productos = ({ route, navigation }) => {
 
     const [categoriaProd, setcateogoriaProd] = useState([]);
     const [text, setText] = useState(null);
 
+    const { item } = route.params;
+
+    console.log(item)
+
     useEffect(() => {
-        const categoriaProductos = productos.filter((el) => el.category === categoria);
+        const categoriaProductos = productos.filter((el) => el.category === item);
         setcateogoriaProd(categoriaProductos);
 
         if(text) {
@@ -21,19 +26,22 @@ const Productos = ({ categoria }) => {
             );
             setcateogoriaProd(nombreProducto);
         }
-    }, [text])
+    }, [text, item])
 
 
     return (
-        <View>
-            <Header title="Productos" />
+        <SafeAreaView>
+            <Header title={ item }/>
+            <Pressable onPress={()=> navigation.goBack()}>
+                <Text>Ir Atras</Text>
+            </Pressable>
             <Buscador text={text} setText={setText}/>
             <FlatList
                 data={categoriaProd}
                 keyExtractor={productos.id}
-                renderItem={({ item }) => <ProductosItem item={item} />}
+                renderItem={({ item }) => <ProductosItem navigation={navigation} item={item} />}
             />
-        </View>
+        </SafeAreaView>
     )
 }
 

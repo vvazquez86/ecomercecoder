@@ -1,12 +1,15 @@
- import { View, Text, StyleSheet, } from 'react-native'
+ import { View, Text, StyleSheet, Pressable, } from 'react-native'
  import React from 'react'
  import { colors } from '../themes/colors'
  import { textFont } from '../themes/textFont'
 
  
- const Header = ({ title }) => {
+ const Header = ({ title, navigation }) => {
    return (
      <View style={styles.container}>
+      <Pressable onPress={() => navigation.goBack()}>
+        <Text>Ir atras</Text>
+      </Pressable>
        <Text style={styles.title}> { title } </Text>
      </View>
    )
@@ -23,9 +26,10 @@
 
     title: {
         fontSize: 25,
-        marginVertical: 10,
+        marginVertical: 20,
         fontWeight: "600",
-        color: colors.marronSuave,    
+        color: colors.marronSuave,
+        marginTop: 50,    
     }
  })
  

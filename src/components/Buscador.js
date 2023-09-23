@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { colors } from '../themes/colors'
+import { useFonts } from 'expo-font';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Buscador = ({ text, setText }) => {
@@ -16,7 +17,6 @@ const limpiarTexto = ()=>{
                 style={styles.input} placeholder='Buscar un producto...'
             />
             <Pressable onPress={()=> limpiarTexto()}>
-                {/* <AntDesign name="close" size={30} color={colors.marronFuerte} /> */}
                 <FontAwesome name="times-circle" size={24} color="black" />
             </Pressable>
         </View>
