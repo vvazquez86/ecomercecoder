@@ -2,29 +2,36 @@ import { View, Text, FlatList, SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
 import Buscador from '../components/Buscador'
 import Header from '../components/Header'
-import { productos } from '../data/productos'
 import ProductosItem from '../components/ProductosItem'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+
 
 
 const Productos = ({ route, navigation }) => {
 
-    const [categoriaProd, setcateogoriaProd] = useState([]);
+    const [categoriaProd, setCateogoriaProd] = useState([]);
     const [text, setText] = useState(null);
-
     const { item } = route.params;
+    const productos = useSelector( state => state.homeSlice.allProducts)
+    
+    const productsFilterByCategory = useSelector(
+        (state) => state.homeSlice.productsFilterByCategory
+    );
 
-    console.log(item)
+
+//Forma de ver un JSON ordenado en la consola...
+//console.log("Productos desde el store", JSON.stringify(productos, null, " "))
+
+    console.log('Productos traidos ', JSON.stringify(productsFilterByCategory, null, " "))
 
     useEffect(() => {
-        const categoriaProductos = productos.filter((el) => el.category === item);
-        setcateogoriaProd(categoriaProductos);
+        
+        setCateogoriaProd(productsFilterByCategory)
 
         if(text) {
-            const nombreProducto = productos.filter(
-                (el) => el.title.toLowerCase() === text.toLowerCase()
-            );
-            setcateogoriaProd(nombreProducto);
+            const nombreProducto = productos.filter((el) => el.title === text);
+            setCateogoriaProd(nombreProducto);
         }
     }, [text, item])
 

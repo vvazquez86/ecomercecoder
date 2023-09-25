@@ -3,12 +3,15 @@ import React from 'react'
 import Header from '../components/Header'
 import Categorias from '../components/Categorias'
 import { colors } from '../themes/colors'
-import { categorias } from '../data/categorias'
+
 import CategoriasItem from '../components/CategoriasItem'
+import { useSelector } from 'react-redux'
 
 const Home = ({ navigation }) => {
 
+const categorias = useSelector( state => state.homeSlice.allCategories)
 
+console.log("Categorias: ", categorias)
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Categorias" navigation={navigation}/>
