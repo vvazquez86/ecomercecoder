@@ -3,4 +3,5 @@ export const colors = {
     marronMedio: '#DFD7BF',
     marronSuave: '#F2EAD3',
     grisTono: '#F5F5F5',
+    dorado: '#F7E402',
 }

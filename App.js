@@ -12,6 +12,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import ProductDetail from './src/screms/ProductDetail';
 import { NavigationContainer } from '@react-navigation/native';
 import RootNavigation from './src/navigation/RootNavigation';
+import TabNav from './src/navigation/TabNav';
 
 export default function App() {
 
@@ -28,7 +29,7 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <RootNavigation />
+      <TabNav />
     </NavigationContainer>
 
   );

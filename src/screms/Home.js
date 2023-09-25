@@ -32,10 +32,8 @@ const styles = StyleSheet.create({
     color: colors.marronSuave,
   },
     containerLista: {
-    backgroundColor: colors.marronSuave,
+    backgroundColor: colors.grisTono,
     margin: 10,
-    borderColor: colors.marronFuerte,
-    borderWidth: 2,
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
